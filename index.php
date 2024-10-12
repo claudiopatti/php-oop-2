@@ -1,12 +1,24 @@
 <?php
 
 
-class product {
+class Product {
 
+
+    public $title;
+    public $price;
+    public $description;
+    public $img; 
     protected $category;
+    protected $type;
 
-    function __construct($category) {
+    function __construct(string $title, float $price, string $description, string $img, string|null $category = null, string|null $type = null) {
+        $this->title = $title;
+        $this->price = $price;
+        $this->description = $description;
+        $this->img = $img;
         $this->setCategory($category);
+        $this->setType($type);
+
     }
 
     public function getCategory() {
@@ -15,13 +27,14 @@ class product {
 
     public function setCategory() {
 
+        $categories = [
+            'Cani',
+            'Gatti'
+        ];
+
         if (is_string($category) 
             &&
-            (
-                $category == 'Cani'
-                ||
-                $category == 'Gatti'
-            )
+            is_array($category, $categories)
             ) {
                 $this->category = $category;
         }
@@ -31,10 +44,29 @@ class product {
         }
     }
 
+    public function getType() {
+        return $this->type;
+    }
 
+    public function setType() {
 
+        $types = [
+            'Food',
+            'Toy',
+            'Petbed'
+        ];
 
+        if (is_string($type) 
+            &&
+            is_array($type, $types)
+            ) {
+                $this->type = $type;
+        }
+        else {
+            $this->type = null;
 
+        }
+    }
 
 }
 
