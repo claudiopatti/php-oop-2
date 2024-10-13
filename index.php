@@ -102,7 +102,7 @@ class Petbed extends Product {
 }
 
 $cani = new Category('Cani', '🐕' );
-$gatti =new category('Gatti', '🐈');
+$gatti =new Category('Gatti', '🐈');
 
 var_dump($cani);
 var_dump($gatti);
@@ -214,9 +214,19 @@ var_dump($allProducts);
 
                             <p>€ <?php echo $product->price ?></p>
 
-                            <h6><?php echo $product->getCategory() ?></h6>
+                            <h6>
+                                <?php 
+                                    $productNameAndIcone = $product->getCategory();
+                                    // echo $product->getCategory()->name;
+                                    echo $productNameAndIcone->name; 
 
-                            <p><?php echo $product->getType() ?></p>
+                                    // echo $product->getCategory()->icon;
+                                    echo $productNameAndIcone->icon; 
+
+                                ?>
+                            </h6>
+
+                            <p><?php echo get_class($product) ?></p>
 
                             <p><?php echo $product->description ?></p>
 
