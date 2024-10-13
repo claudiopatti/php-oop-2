@@ -79,11 +79,11 @@ trait HasBrand {
     }
 
     public function setBrand(string $brand) {
-        if (strlen($brand) >= 1) {
+        if (strlen($brand) >= 2) {
             $this->brand = $brand;
         }
         else {
-            $this->brand = null;
+            throw new Exception('Nome del brand troppo corto, usare più caratteri!!!');
         }
     }
 }
@@ -98,7 +98,7 @@ class Food extends Product {
         parent::__construct($title, $price, $description, $img, $category);
 
         $this->ingredients = $ingredients;
-        $this->brand = $brand;
+        $this->setBrand($brand);
 
     }
 }
@@ -113,7 +113,7 @@ class Toy extends Product {
         parent::__construct($title, $price, $description, $img, $category);
         
         $this->materials = $materials;
-        $this->brand = $brand;
+        $this->setBrand($brand);
 
     }
 }
@@ -128,7 +128,7 @@ class Petbed extends Product {
         parent::__construct($title, $price, $description, $img, $category);
         
         $this->size = $size;
-        $this->brand = $brand;
+        $this->setBrand($brand);
 
     }
 }
